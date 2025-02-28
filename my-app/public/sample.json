@@ -1,0 +1,20 @@
+{
+  "message": "sample data",
+  "data": [
+    {
+      "name": "김우현",
+      "position": "운영진",
+      "age": "24"
+    },
+    {
+      "name": "ChaeChae",
+      "position": "developer",
+      "age": "24"
+    },
+    {
+      "name": "gwangil",
+      "position": "developer",
+      "age": "25"
+    }
+  ]
+}
