@@ -3,18 +3,21 @@
   "data": [
     {
       "name": "김우현",
-      "position": "운영진",
-      "age": "24"
+      "position": "WEB",
+      "age": "24",
+      "role": "5기 부파트장"
     },
     {
       "name": "ChaeChae",
       "position": "developer",
-      "age": "24"
+      "age": "24",
+      "role": "5기 파트장"
     },
     {
       "name": "gwangil",
       "position": "developer",
-      "age": "25"
+      "age": "25",
+      "role": "4기 파트장"
     }
   ]
 }
