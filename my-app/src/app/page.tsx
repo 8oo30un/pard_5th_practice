@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface Data {
+  key: number;
   name: string;
   age: number;
   position: string;
@@ -128,7 +129,9 @@ export default function Home() {
       </div>
 
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[300px] h-[300px]">
-        <Image src="/KakaoTalk_Photo_2025-02-25-15-16-01.png" alt="" fill />
+        <Link href={`/introduction/${data[0]?.key}`}>
+          <Image src="/KakaoTalk_Photo_2025-02-25-15-16-01.png" alt="" fill />
+        </Link>
       </div>
       <div className="flex items-center justify-center h-screen">
         <div className="grid grid-cols-2 grid-rows-2  w-[800px] h-[800px]">
@@ -159,12 +162,12 @@ export default function Home() {
             {data[0]?.role}
           </div>
         </div>
-        <Link
+        {/* <Link
           href="/crud"
           className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-center gap-2 px-4 py-3 bg-white text-[#6F61c0] rounded-lg shadow-lg hover:bg-gray-100"
         >
           🔧 CRUD 페이지로 이동
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

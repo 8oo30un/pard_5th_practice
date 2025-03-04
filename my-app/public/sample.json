@@ -2,18 +2,21 @@
   "message": "sample data",
   "data": [
     {
+      "key": 1,
       "name": "김우현",
       "position": "WEB",
-      "age": "24",
+      "age": "240",
       "role": "5기 부파트장"
     },
     {
+      "key": 2,
       "name": "ChaeChae",
       "position": "developer",
       "age": "24",
       "role": "5기 파트장"
     },
     {
+      "key": 3,
       "name": "gwangil",
       "position": "developer",
       "age": "25",

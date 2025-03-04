@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import "./globals.css";
 import { useDarkMode } from "./hooks/useDarkMode";
-import ThemeToggle from "./components/ThemeToggle";
+import SideBar from "@/app/components/SideBar";
 
 export default function RootLayout({
   children,
@@ -25,8 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="min-h-screen bg-white dark:bg-gray-800 text-black dark:text-white">
-          {/* 다크 모드 및 라이트 모드 전환 버튼 */}
-          {/* <ThemeToggle /> */}
+          <SideBar />
           {children}
         </div>
       </body>
