@@ -7,6 +7,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import HoverBox from "./components/HoverBox";
 
 interface Data {
   key: number;
@@ -33,6 +34,8 @@ export default function Home() {
   // const [data, setData] = useState<Record<string, Data>>({}); // 객체로 변경
   // 이렇게 하면 data["woohyun"] 가능
   const [error, setError] = useState<string | null>(null);
+
+  console.log(error);
 
   useEffect(() => {
     axios
@@ -123,39 +126,40 @@ export default function Home() {
 
   return (
     <div className=" bg bg-[#D5FFE4] dark:bg-black w-screen h-screen ">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[300px] h-[300px]">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[300px] h-[300px] z-200">
         <Link href={`/introduction/${data[0]?.key}`}>
           <Image src="/KakaoTalk_Photo_2025-02-25-15-16-01.png" alt="" fill />
         </Link>
       </div>
       <div className="flex items-center justify-center h-screen">
         <div className="grid grid-cols-2 grid-rows-2  w-[800px] h-[800px]">
-          <div className="bg-[#6F61C0] border-none flex items-center justify-center text-center border-2 rounded-tl-3xl">
-            {/* {user.age} */}
-            <p>{data[0]?.name}</p>
-          </div>
-          <div className="bg-[#8BE8E5] border-none flex items-center justify-center text-center border-2 rounded-tr-3xl">
-            {/* {user.mbti} */}
-            {/* {data["김우현"]?.age} */}
-            {data[0]?.age}
-          </div>
-          <div className="bg-[#8BE8E5]  border-none flex items-center justify-center text-center border-2 rounded-bl-3xl">
-            {/* <Heart
-              className={`w-10 h-10 stroke-red-500 ${
-                user.love ? "fill-red-500" : "fill-none"
-              }`}
-            /> */}
-            {data[0]?.position}
-          </div>
-          <div className="bg-[#6F61C0] border-none flex items-center justify-center text-center border-2 rounded-br-3xl">
-            {/* {getUserInfo(user)} */}
-            {/* {getPardInfo(PardMember)}
-            {PardMember["name"]}
-            {genericSeminar.etc}
-            {genericDate.etc}
-            {pardWeb(chaechae, "name")} */}
-            {data[0]?.role}
-          </div>
+          <HoverBox
+            color="bg-[#6F61C0]"
+            name={data[0]?.name} // 데이터를 전달
+            imageSrc="/free-icon-github-2111292.png" // 이미지 소스 전달
+            roundedClass="rounded-tl-3xl" // border-radius 설정
+          />
+
+          <HoverBox
+            color="bg-[#8BE8E5]"
+            name={data[0]?.age} // 데이터를 전달
+            imageSrc="/free-icon-github-2111292.png" // 이미지 소스 전달
+            roundedClass="rounded-tr-3xl" // border-radius 설정
+          />
+
+          <HoverBox
+            color="bg-[#8BE8E5]"
+            name={data[0]?.position} // 데이터를 전달
+            imageSrc="/free-icon-github-2111292.png" // 이미지 소스 전달
+            roundedClass="rounded-bl-3xl" // border-radius 설정
+          />
+
+          <HoverBox
+            color="bg-[#6F61C0]"
+            name={data[0]?.role} // 데이터를 전달
+            imageSrc="/free-icon-github-2111292.png" // 이미지 소스 전달
+            roundedClass="rounded-br-3xl" // border-radius 설정
+          />
         </div>
         {/* <Link
           href="/crud"
