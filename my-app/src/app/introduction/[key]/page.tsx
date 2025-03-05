@@ -1,4 +1,7 @@
-"use server";
+"use client";
+
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type User = {
   key: number;
@@ -8,31 +11,32 @@ type User = {
   role: string;
 };
 
-import { notFound } from "next/navigation";
+export default function Introduction() {
+  const { key } = useParams(); // ✅ useParams()로 동적 라우트 값 가져오기
+  const router = useRouter();
+  const [userData, setUserData] = useState<User | null>(null);
 
-// sample.json을 서버에서 직접 불러옴
-async function fetchData(key: number) {
-  try {
-    const res = await fetch(`http:localhost:3000/sample.json`);
-    const { data }: { data: User[] } = await res.json();
+  useEffect(() => {
+    if (!key) return; // ✅ key가 없는 경우 early return
 
-    return data.find((user) => user.key === key) || null;
-  } catch (error) {
-    console.error("데이터를 불러오는 중 오류 발생:", error);
-    return null;
-  }
-}
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/sample.json");
+        const { data }: { data: User[] } = await res.json();
+        const user = data.find((user) => user.key === Number(key));
+        if (!user) router.push("/404"); // ✅ 데이터가 없으면 404로 이동
+        setUserData(user || null);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류 발생:", error);
+        router.push("/404"); // ✅ 오류 발생 시 404로 이동
+      }
+    };
 
-// 서버 컴포넌트로 변경
-export default async function Introduction({
-  params,
-}: {
-  params: { key?: string };
-}) {
-  const key = Number(params.key);
-  const userData = !isNaN(key) ? await fetchData(key) : null;
+    fetchData();
+  }, [key, router]);
 
-  if (!userData) notFound(); // 데이터가 없거나 key가 잘못된 경우 404
+  if (!userData) return <p className="text-center">로딩 중...</p>;
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#a084e8]">
       <h1 className="text-3xl font-bold">{userData.name}</h1>

@@ -22,12 +22,12 @@ export default function Home() {
   // const mbti: string = "INFP";
   // const love: boolean = false;
 
-  interface User {
-    age: number;
-    name: string;
-    mbti: string;
-    love: boolean;
-  }
+  // interface User {
+  //   age: number;
+  //   name: string;
+  //   mbti: string;
+  //   love: boolean;
+  // }
 
   const [data, setData] = useState<Data[]>([]);
   // const [data, setData] = useState<Record<string, Data>>({}); // 객체로 변경
@@ -78,7 +78,7 @@ export default function Home() {
   // const genericDate: aboutMe<number> = { etc: 20250227 };
   // const genericSeminar: aboutMe<string> = { etc: "pard_5th_1th_seminar" };
 
-  const user: User = { name: "김우현", age: 24, mbti: "INFP", love: false };
+  // const user: User = { name: "김우현", age: 24, mbti: "INFP", love: false };
   // const pard: User = { name: "Pard", age: 5, mbti: "SEXY", love: true }; // 옆사람 꺼 공유해서 추가하기
 
   // const getUserInfo = (user: User): string => {
@@ -123,11 +123,6 @@ export default function Home() {
 
   return (
     <div className=" bg bg-[#D5FFE4] dark:bg-black w-screen h-screen ">
-      <div className="font-sans text-2xl text-center bg bg-[#a084e8] text-white">
-        ☁️ 파드 5기 OT 과제 {user.name} 페이지
-        {error && <p>{error}</p>}
-      </div>
-
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[300px] h-[300px]">
         <Link href={`/introduction/${data[0]?.key}`}>
           <Image src="/KakaoTalk_Photo_2025-02-25-15-16-01.png" alt="" fill />

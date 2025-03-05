@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import "./globals.css";
 import { useDarkMode } from "./hooks/useDarkMode";
 import SideBar from "@/app/components/SideBar";
+import HeaderBar from "./components/HeaderBar";
 
 export default function RootLayout({
   children,
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="min-h-screen bg-white dark:bg-gray-800 text-black dark:text-white">
+          <HeaderBar />
           <SideBar />
           {children}
         </div>
