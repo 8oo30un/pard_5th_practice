@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen bg-white dark:bg-gray-800 text-black dark:text-white">
+        <div className="min-h-screen bg-white dark:bg-gray-800 text-black dark:text-white pb-16">
           <HeaderBar />
           <SideBar />
           {children}

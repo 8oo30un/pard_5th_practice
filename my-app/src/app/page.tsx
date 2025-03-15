@@ -95,6 +95,14 @@ export default function Home() {
     "/IMG_6644.JPG",
   ];
 
+  // 데이터를 매핑하기 위한 배열
+  const items: { color: string; key: keyof Data; rounded: string }[] = [
+    { color: "bg-[#6F61C0]", key: "name", rounded: "rounded-tl-3xl" },
+    { color: "bg-[#8BE8E5]", key: "age", rounded: "rounded-tr-3xl" },
+    { color: "bg-[#8BE8E5]", key: "position", rounded: "rounded-bl-3xl" },
+    { color: "bg-[#6F61C0]", key: "role", rounded: "rounded-br-3xl" },
+  ];
+
   return (
     <div className="bg-[#D5FFE4] dark:bg-black w-screen h-screen">
       {/* 중앙에 위치하는 메인 이미지 */}
@@ -106,31 +114,10 @@ export default function Home() {
 
       <div className="flex items-center justify-center h-screen">
         <div className="grid grid-cols-2 grid-rows-2 w-[800px] h-[800px] relative z-10">
-          {[
-            {
-              color: "bg-[#6F61C0]",
-              text: data[0]?.name,
-              rounded: "rounded-tl-3xl",
-            },
-            {
-              color: "bg-[#8BE8E5]",
-              text: data[0]?.age,
-              rounded: "rounded-tr-3xl",
-            },
-            {
-              color: "bg-[#8BE8E5]",
-              text: data[0]?.position,
-              rounded: "rounded-bl-3xl",
-            },
-            {
-              color: "bg-[#6F61C0]",
-              text: data[0]?.role,
-              rounded: "rounded-br-3xl",
-            },
-          ].map(({ color, text, rounded }, index) => (
+          {items.map((item, index) => (
             <motion.div
               key={index}
-              className={`${color} ${rounded} flex items-center justify-center text-center relative p-4 z-10`}
+              className={`${item.color} ${item.rounded} flex items-center justify-center text-center relative p-4 z-10`}
               whileHover={{ opacity: 1 }}
             >
               {/* 이미지 */}
@@ -147,7 +134,8 @@ export default function Home() {
                 whileHover={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                {text}
+                {data[0]?.[item.key]}
+                {/* // 이부분 수정하면 사람 바뀜 */}
               </motion.p>
             </motion.div>
           ))}
